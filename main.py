@@ -47,7 +47,7 @@ def search(item,quality):
         for i in range(len(data)):
             try:
                 if data[i]['sell_price_min'] != 0:
-                    print(f"[=] {data[i]['city']}: ${data[i]['sell_price_min']} |{quality_func(quality)} ({data_func(data[i]['sell_price_min_date'])})")
+                    print(f"[=] {data[i]['city']}: ${data[i]['sell_price_min']:,} |{quality_func(quality)} ({data_func(data[i]['sell_price_min_date'])})")
             except:
                 pass
         print('')
