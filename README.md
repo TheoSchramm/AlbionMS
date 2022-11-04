@@ -1,5 +1,5 @@
 # Albion MarketSearch
-Um código que retorna o preço mais recente de determinado item em todas capitais do jogo.
+Um código que retorna o preço mais recente de determinado item em todas as capitais do jogo.
 
 # __Perguntas Frequentes__
 
