@@ -1,4 +1,4 @@
-import urllib.request, json, os, unidecode
+import urllib.request, json
 
 cities ='''
 Lymhurst,
@@ -55,28 +55,5 @@ def search(item,quality):
         print(f'[-] Erro! Qualidade inválida\n')
         return 0
 
-def generate_item_list():
-    with urllib.request.urlopen(f"https://raw.githubusercontent.com/broderickhyman/ao-bin-dumps/master/formatted/items.json") as url:
-        data = json.load(url)
-    new_data = {}
-    
-    for i in range(len(data)):
-        try:
-            temp1 = data[i]['LocalizedNames']['EN-US'].lower()
-            temp2 = unidecode.unidecode(data[i]['LocalizedNames']['PT-BR']).lower()
-
-            new_data[temp1] = data[i]['UniqueName']
-            new_data[temp2] = data[i]['UniqueName']
-        except:
-            pass
-
-    with open('item_list.json' , 'w+') as fp:
-        json.dump(new_data, fp, indent=4)
-    print('[+] Lista criada')
-
-if __name__ == '__main__':
-    if not os.path.isfile('item_list.json'):
-        generate_item_list()
-
-    while True:
-        search(input('[+] Digite o nome do item para buscar: '),input('[+] Digite o número da qualidade desejada (0/1/2/3/4/5): '))
+while __name__ == '__main__':
+    search(input('[+] Digite o nome do item para buscar: '),input('[+] Digite o número da qualidade desejada (0/1/2/3/4/5): '))
