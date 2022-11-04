@@ -9,7 +9,7 @@ __1. Os preços estão desatualizados! Como faço para atualizar?__<br>
 __2. Preciso baixar mais alguma coisa além desse client?__<br>
       - É necessário ter [Python](https://www.python.org/downloads/) instalado na sua máquina e que o arquivo JSON esteja no mesmo diretório do código.<br><br>
 
-__3. Como saber o nome de tal item?__<br>
+__3. Como vou saber o nome de tal item?__<br>
       - O arquivo JSON contém uma lista em inglês e em português de todos os itens do jogo.<br><br>
 
 __4. Como vou saber qual número é X qualidade?__<br>
