@@ -6,7 +6,8 @@ Bridgewatch,
 FortSterling,
 Martlock,
 Thetford,
-Caerleon'''.replace('\n','')
+Caerleon
+'''.replace('\n','')
 
 quality_dict = {
     '0': 'All',
