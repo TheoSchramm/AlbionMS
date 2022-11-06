@@ -1,5 +1,9 @@
 # Albion MarketSearch
-Um código que retorna o preço mais recente de determinado item em todas as capitais do jogo.
+Um código que retorna o preço mais recente de determinado item em todas as capitais do jogo. Para começar a usar, baixe 1 das 2 versões disponíveis junto com o arquivo JSON, feito isso simplesmente execute o código.
+# Versão 1
+![](/cmd_example.png?raw=true "Versão 1")
+# Versão 2
+![](/gui_example.png?raw=true "Versão 2")
 
 # __Perguntas Frequentes__
 
@@ -12,7 +16,7 @@ __2. Preciso baixar mais alguma coisa além desse client?__<br>
 __3. Como vou saber o nome de tal item?__<br>
       - O arquivo JSON contém uma lista em inglês e em português de todos os itens do jogo.<br><br>
 
-__4. Como vou saber qual número é X qualidade?__<br>
+__4. Estou utilizando a versão 1, como saber qual número é X qualidade?__<br>
 | Todas | Normal | Bom | Excepcional | Excelente | Obra-Prima |
 |:-----:|:------:|:---:|:-----------:|:---------:|:----------:|
 |   0   |    1   |  2  |      3      |     4     |      5     |
