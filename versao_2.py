@@ -4,7 +4,7 @@ from tkinter import ttk, messagebox, Toplevel
 root = tk.Tk()
 root.geometry('280x140')
 root.resizable(False, False)
-root.title('Albion Market Search')
+root.title('Market Search')
 
 quality_dict = {
     'Qualquer' : 0,
