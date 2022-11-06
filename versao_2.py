@@ -6,15 +6,6 @@ root.geometry('280x140')
 root.resizable(False, False)
 root.title('Albion Market')
 
-cities ='''
-Lymhurst
-Bridgewatch
-FortSterling
-Martlock,
-Thetford
-Caerleon
-'''.replace('\n','')
-
 quality_dict = {
     'Qualquer' : 0,
     'Normal' : 1,
@@ -39,15 +30,15 @@ def search(item,quality,enchantment):
         with open('item_list.json' , 'r') as fp:
             item_list = json.load(fp)
     except:
-        messagebox.showerror('Erro', 'Arquivo JSON não encontrado!')
+        messagebox.showerror('Erro', 'Arquivo JSON não encontrado.')
         return 0
 
     try:
-        url = f"https://www.albion-online-data.com/api/v2/stats/prices/{item_list[item]}{enchantment_func(enchantment)}?locations={cities}&qualities={quality}"
+        url = f"https://www.albion-online-data.com/api/v2/stats/prices/{item_list[item]}{enchantment_func(enchantment)}?locations=LymhurstBridgewatchFortSterlingMartlock,ThetfordCaerleon&qualities=qualities={quality}"
         with urllib.request.urlopen(url) as url_obj:
             data = json.load(url_obj)
     except:
-        messagebox.showerror(f'Erro','Item inválido')
+        messagebox.showerror(f'Erro','Item inválido.')
         return 0
 
     try:
@@ -73,7 +64,7 @@ def search(item,quality,enchantment):
         result.geometry(f"400x{result_dynamic_height}")
         result.title(f"{result_search}x {item.title()}")
     except:
-        messagebox.showerror(f'Erro', 'Busca inválida')
+        messagebox.showerror(f'Erro', 'Busca inválida.')
         return 0
 
 
