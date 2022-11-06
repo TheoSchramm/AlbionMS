@@ -1,9 +1,9 @@
 # Albion MarketSearch Project
 Um código que retorna o preço mais recente de determinado item em todas as capitais do jogo. Para começar a usar, baixe 1 das 2 versões disponíveis junto com o arquivo JSON, feito isso simplesmente execute o código.
 # Versão 1
-![](/cmd_example.png?raw=true "Versão 1")
+![](/versao_1_exemplo.png?raw=true "Versão 1")
 # Versão 2
-![](/gui_example.png?raw=true "Versão 2")
+![](/versao_2_exemplo.png?raw=true "Versão 2")
 
 # __Perguntas Frequentes__
 
