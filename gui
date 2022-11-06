@@ -1,5 +1,4 @@
-import urllib.request, json
-import tkinter as tk
+import urllib.request, json, tkinter as tk
 from tkinter import ttk, messagebox, Toplevel
 
 root = tk.Tk()
