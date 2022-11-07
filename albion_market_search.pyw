@@ -35,7 +35,6 @@ def search(item,quality,enchantment):
 
     try:
         url = f"https://www.albion-online-data.com/api/v2/stats/prices/{item_list[item]}{enchantment_func(enchantment)}?locations=LymhurstBridgewatchFortSterlingMartlockThetfordCaerleon&qualities={quality}"
-        print(url)
         with urllib.request.urlopen(url) as url_obj:
             data = json.load(url_obj)
     except:
@@ -51,7 +50,11 @@ def search(item,quality,enchantment):
         tree.heading('city', text='Cidade')
         tree.heading('sell_price_min', text='Preço')
         tree.heading('sell_price_min_date', text='Data')
-    
+
+        tree.column('city',anchor='center')
+        tree.column('sell_price_min',anchor='center')
+        tree.column('sell_price_min_date',anchor='center')
+
         successful_search = 0
         for i in range(len(data)):
             if data[i]['sell_price_min'] != 0:
@@ -76,9 +79,9 @@ def search(item,quality,enchantment):
         def copy2clip(event):
             for selected_item in tree.selection():
                 key = tree.item(selected_item)
-                root.clipboard_clear
+                root.clipboard_clear()
                 root.clipboard_append("     ".join(key['values']))
-                root.update
+
         tree.bind('<<TreeviewSelect>>', copy2clip)
         
         def tree_sort_column(tree, column, reverse):
@@ -133,7 +136,6 @@ cbb_enchantment.place(x=100, y=70)
 b1 = tk.Button(root, height = 1, width = 30, text= 'Procurar...', command = lambda: search(entry_item_name.get().lower(),quality_dict[cbb_quality_value.get()],cbb_enchantment_value.get()))
 b1.place(x=25, y=100)
 
+
 root.bind("<Return>", (lambda event: search(entry_item_name.get().lower(),quality_dict[cbb_quality_value.get()],cbb_enchantment_value.get())))
-
-
 root.mainloop()
