@@ -1,4 +1,4 @@
-# Albion MarketSearch
+# Albion Market Search
 Um programa feito em Python que utilizando de dados coletados por jogadores de Albion Online, consegue retornar os preços mais recente de (quase) qualquer item do mercado de todas as capitais do jogo. 
 
 
