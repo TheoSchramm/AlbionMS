@@ -130,10 +130,10 @@ cbb_enchantment.current(0)
 cbb_enchantment.place(x=100, y=70)
 
 
-b1 = tk.Button(root, height = 1, width = 30, text= 'Procurar...', command = lambda: search(entry_item_name.get(),quality_dict[cbb_quality_value.get()],cbb_enchantment_value.get()))
+b1 = tk.Button(root, height = 1, width = 30, text= 'Procurar...', command = lambda: search(entry_item_name.get().lower(),quality_dict[cbb_quality_value.get()],cbb_enchantment_value.get()))
 b1.place(x=25, y=100)
 
-root.bind("<Return>", (lambda event: search(entry_item_name.get(),quality_dict[cbb_quality_value.get()],cbb_enchantment_value.get())))
+root.bind("<Return>", (lambda event: search(entry_item_name.get().lower(),quality_dict[cbb_quality_value.get()],cbb_enchantment_value.get())))
 
 
 root.mainloop()
