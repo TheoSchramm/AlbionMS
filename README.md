@@ -3,7 +3,7 @@ Um programa feito em Python que utilizando de dados coletados por jogadores de A
 
 
 # Exemplo
-![](/exemplo.png?raw=true "Exemplo")
+![](/img_exemplo.png?raw=true "Exemplo")
 
 
 # Como utilizar?
