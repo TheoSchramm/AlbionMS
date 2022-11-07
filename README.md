@@ -9,7 +9,7 @@ Um programa feito em Python que utilizando de dados coletados por jogadores de A
 # Como utilizar?
 1. Baixe os arquivos PYW e JSON<br>
 2. Execute o arquivo PYW<br>
-3. Digite o nome e selecione as especificações do seu item<br>
+3. Digite o nome do item e selecione suas especificações<br>
 4. Pronto, fácil assim!<br>
 
 
