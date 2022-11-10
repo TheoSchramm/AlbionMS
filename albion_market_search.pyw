@@ -6,6 +6,27 @@ root.geometry('280x140')
 root.resizable(False, False)
 root.title('Market Search')
 
+def save_url(index,item,quality,enchantment):
+    try:
+        with open("fav.json", 'r') as fp:
+            data = json.load(fp)
+    except:
+        with open('fav.json', 'w') as fp:
+            json.dump({}, fp, indent=4)
+        save_url(index,item,quality,enchantment)
+    else:
+        data[index] = item,quality,enchantment
+        with open('fav.json', 'w') as fp:
+            json.dump(data, fp, indent=4)
+        messagebox.showinfo('Item favoritado', f'{item.title()} favoritado na posição F{index}.')
+    
+def open_url(index):
+    index = str(index)
+    with open('fav.json', 'r') as fp:
+        data = json.load(fp)
+    search(data[index][0], data[index][1], data[index][2])
+
+
 quality_dict = {
     'Qualquer' : 0,
     'Normal' : 1,
@@ -14,6 +35,8 @@ quality_dict = {
     'Excelente' : 4,
     'Obra-prima' : 5,
 }
+def num_to_quality(num):
+    return list(quality_dict.keys())[list(quality_dict.values()).index(num)]
 
 def enchantment_func(enchantment_num):
         match enchantment_num:
@@ -29,43 +52,46 @@ def search(item,quality,enchantment):
     try:
         with open('item_list.json' , 'r') as fp:
             item_list = json.load(fp)
+        url = f"https://www.albion-online-data.com/api/v2/stats/prices/{item_list[item]}{enchantment_func(enchantment)}?locations=LymhurstBridgewatchFortSterlingMartlockThetfordCaerleon&qualities={quality}"
     except:
         messagebox.showerror('Erro', 'Arquivo JSON não encontrado.')
-        return 0
 
     try:
-        url = f"https://www.albion-online-data.com/api/v2/stats/prices/{item_list[item]}{enchantment_func(enchantment)}?locations=LymhurstBridgewatchFortSterlingMartlockThetfordCaerleon&qualities={quality}"
         with urllib.request.urlopen(url) as url_obj:
             data = json.load(url_obj)
     except:
         messagebox.showerror(f'Erro','Item inválido.')
-        return 0
 
     try:
         result = tk.Toplevel(root)
-        result.geometry(f"620x200")
-        result.resizable(False, False)
+        result.geometry(f"820x245")
+        result.resizable(True, False)
 
-        tree = ttk.Treeview(result, columns=('city','sell_price_min','sell_price_min_date'), show='headings')
+        tree = ttk.Treeview(result, columns=('city','sell_price_min','quality','sell_price_min_date'), show='headings')
         tree.heading('city', text='Cidade')
         tree.heading('sell_price_min', text='Preço')
+        tree.heading('quality', text='Qualidade')
         tree.heading('sell_price_min_date', text='Data')
 
         tree.column('city',anchor='center')
         tree.column('sell_price_min',anchor='center')
+        tree.column('quality',anchor='center')
         tree.column('sell_price_min_date',anchor='center')
 
         successful_search = 0
         for i in range(len(data)):
             if data[i]['sell_price_min'] != 0:
                 successful_search += 1
-                tree.insert('', tk.END, values=(data[i]['city'], f"{data[i]['sell_price_min']:,}", data_func(data[i]['sell_price_min_date'])))
+                tree.insert('', tk.END, values=(
+                    data[i]['city'], 
+                    data[i]['sell_price_min'], 
+                    data[i]['quality'], 
+                    data_func(data[i]['sell_price_min_date'])))
         
         if successful_search == 0:
             result.destroy()
             messagebox.showerror('Erro', 'Nenhum item foi encontrado.')
-            return 0
-
+    
         result.title(f"{successful_search}x {item.title()} (Qualidade: {cbb_quality_value.get()} | Encantamento: {cbb_enchantment_value.get()})")
         result.bind("<Escape>",lambda event: result.destroy())
         result.focus()
@@ -76,29 +102,48 @@ def search(item,quality,enchantment):
         tree.configure(yscroll=scrollbar.set)
         scrollbar.grid(row=0, column=1, sticky='ns')
         
-        def copy2clip(event):
+        def item_selected(event):
             for selected_item in tree.selection():
-                key = tree.item(selected_item)
+                item = tree.item(selected_item)
+                record = item['values']
                 root.clipboard_clear()
-                root.clipboard_append("     ".join(key['values']))
+                root.clipboard_append('   '.join(str(i) for i in record))
+        tree.bind('<<TreeviewSelect>>', item_selected)
+        
+        def tree_sort_column(t, col, reverse):
+            l = [(t.set(k, col), k) for k in t.get_children('')]
+            
+            try:
+                l.sort(key=lambda t: int(t[0]), reverse=reverse)
+            except ValueError:
+                l.sort(reverse=reverse)
+            
+            for index, (val, k) in enumerate(l):
+                t.move(k, '', index)
 
-        tree.bind('<<TreeviewSelect>>', copy2clip)
+            t.heading(col, command=lambda _col=col: \
+                tree_sort_column(t, _col, not reverse))
+
+        for col, text in zip(('city','sell_price_min','quality','sell_price_min_date'),('Cidade','Preço','Qualidade','Data')):
+            tree.heading(col, text=text, command=lambda _col=col: \
+                tree_sort_column(tree, _col, False))
         
-        def tree_sort_column(tree, column, reverse):
-            list = [(tree.set(i, column), i) for i in tree.get_children('')]
-            list.sort(reverse=reverse)
-            for index, (value, i) in enumerate(list):
-                tree.move(i, '', index)
-            tree.heading(column, command=lambda: \
-                tree_sort_column(tree, column, not reverse))
-        
-        for column,text in zip(('city','sell_price_min','sell_price_min_date'),('Cidade','Preço','Data')):
-            tree.heading(column, text=text, command=lambda _column=column: \
-                    tree_sort_column(tree, _column, False))
+        result.bind('<F1>', (lambda event: save_url(1,item,quality,enchantment)))
+        result.bind('<F2>', (lambda event: save_url(2,item,quality,enchantment)))
+        result.bind('<F3>', (lambda event: save_url(3,item,quality,enchantment)))
+        result.bind('<F4>', (lambda event: save_url(4,item,quality,enchantment)))
+        result.bind('<F5>', (lambda event: save_url(5,item,quality,enchantment)))
+        result.bind('<F6>', (lambda event: save_url(6,item,quality,enchantment)))
+        result.bind('<F7>', (lambda event: save_url(7,item,quality,enchantment)))
+        result.bind('<F8>', (lambda event: save_url(8,item,quality,enchantment)))
+        result.bind('<F9>', (lambda event: save_url(9,item,quality,enchantment)))
+        result.bind('<F10>', (lambda event: save_url(10,item,quality,enchantment)))
+        result.bind('<F11>', (lambda event: save_url(11,item,quality,enchantment)))
+        result.bind('<F12>', (lambda event: save_url(12,item,quality,enchantment)))
+
     except:
         result.destroy()
         messagebox.showerror(f'Erro', 'Busca inválida.')
-        return 0
 
 
 lbl_item_name = tk.Label(text = "Nome do item:")
@@ -138,4 +183,18 @@ b1.place(x=25, y=100)
 
 
 root.bind("<Return>", (lambda event: search(entry_item_name.get().lower(),quality_dict[cbb_quality_value.get()],cbb_enchantment_value.get())))
+root.bind("<F1>",(lambda event: open_url(1)))
+root.bind("<F2>",(lambda event: open_url(2)))
+root.bind("<F3>",(lambda event: open_url(3)))
+root.bind("<F4>",(lambda event: open_url(4)))
+root.bind("<F5>",(lambda event: open_url(5)))
+root.bind("<F6>",(lambda event: open_url(6)))
+root.bind("<F7>",(lambda event: open_url(7)))
+root.bind("<F8>",(lambda event: open_url(8)))
+root.bind("<F9>",(lambda event: open_url(9)))
+root.bind("<F10>",(lambda event: open_url(10)))
+root.bind("<F11>",(lambda event: open_url(11)))
+root.bind("<F12>",(lambda event: open_url(12)))
+
+
 root.mainloop()
