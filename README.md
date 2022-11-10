@@ -24,9 +24,19 @@ __Preciso baixar mais alguma coisa além desse client?__<br>
 __Como vou saber o nome de tal item?__<br>
       > O arquivo JSON contém uma lista em inglês e em português de todos os itens do jogo.
 
+__Meus favoritos zeraram, socorro!__<br>
+      > Você provavelmente moveu/apagou o arquivo fav.json, restaure ele e seus favoritos voltarão.
+
+__Qual número é X qualidade?__<br>
+| Qualquer | Normal | Bom | Excepcional | Excelente | Obra-Prima |
+|:--------:|:------:|:---:|:-----------:|:---------:|:----------:|
+|     0    |    1   |  2  |      3      |     4     |      5     |
 
 # Atalhos
 - Começar pesquisa: `Enter`
 - Fechar janela dos resultados: `Esc`
-- Copiar dados: `Duplo clique na linha desejada`
-- Mudar a classficação: `Duplo clique na coluna desejada`
+- Copiar dados: `Clique na linha desejada`
+- Mudar a classficação: `Clique na coluna desejada`
+- Salvar item como favorito: `F1-F12 na janela dos resultados`
+- Abrir item favoritado: `F1-F12 na janela de pesquisa`
+
