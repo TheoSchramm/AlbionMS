@@ -27,11 +27,6 @@ __Como vou saber o nome de tal item?__<br>
 __Meus favoritos zeraram, socorro!__<br>
       > Você provavelmente moveu/apagou o arquivo fav.json, restaure ele e seus favoritos voltarão.
 
-__Qual número é X qualidade?__<br>
-| Qualquer | Normal | Bom | Excepcional | Excelente | Obra-Prima |
-|:--------:|:------:|:---:|:-----------:|:---------:|:----------:|
-|     0    |    1   |  2  |      3      |     4     |      5     |
-
 # Atalhos
 - Começar pesquisa: `Enter`
 - Fechar janela dos resultados: `Esc`
