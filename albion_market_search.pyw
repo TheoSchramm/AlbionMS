@@ -38,14 +38,13 @@ def open_url(index):
 
 def enchantment_func(enchantment_num):
         match enchantment_num:
-            case '0':
+            case 0:
                 return ''
             case _:
                 return f'@{enchantment_num}'
 
 def data_func(timestamp):
     return f"{timestamp[8:10]}/{timestamp[5:7]}/{timestamp[0:4]} / {timestamp[11:13]}:{timestamp[14:16]}:{timestamp[17:20]}"
-
 
 def copy2clip(event, tree):
     for selected_item in tree.selection():
@@ -54,7 +53,6 @@ def copy2clip(event, tree):
         root.clipboard_clear()
         root.clipboard_append('   '.join(str(i) for i in record))
         
-
 def tree_sort_column(t, col, reverse):
     l = [(t.set(k, col), k) for k in t.get_children('')]
     try:
@@ -137,18 +135,18 @@ def search(item,quality,enchantment):
 
         tree.bind('<<TreeviewSelect>>', lambda event: copy2clip(None, tree))
         result.bind('<Escape>',lambda event: result.destroy())
-        result.bind('<F1>', (lambda event: save_url(1,item,quality,int(enchantment))))
-        result.bind('<F2>', (lambda event: save_url(2,item,quality,int(enchantment))))
-        result.bind('<F3>', (lambda event: save_url(3,item,quality,int(enchantment))))
-        result.bind('<F4>', (lambda event: save_url(4,item,quality,int(enchantment))))
-        result.bind('<F5>', (lambda event: save_url(5,item,quality,int(enchantment))))
-        result.bind('<F6>', (lambda event: save_url(6,item,quality,int(enchantment))))
-        result.bind('<F7>', (lambda event: save_url(7,item,quality,int(enchantment))))
-        result.bind('<F8>', (lambda event: save_url(8,item,quality,int(enchantment))))
-        result.bind('<F9>', (lambda event: save_url(9,item,quality,int(enchantment))))
-        result.bind('<F10>', (lambda event: save_url(10,item,quality,int(enchantment))))
-        result.bind('<F11>', (lambda event: save_url(11,item,quality,int(enchantment))))
-        result.bind('<F12>', (lambda event: save_url(12,item,quality,int(enchantment))))
+        result.bind('<F1>', (lambda event: save_url(1,item,quality,enchantment)))
+        result.bind('<F2>', (lambda event: save_url(2,item,quality,enchantment)))
+        result.bind('<F3>', (lambda event: save_url(3,item,quality,enchantment)))
+        result.bind('<F4>', (lambda event: save_url(4,item,quality,enchantment)))
+        result.bind('<F5>', (lambda event: save_url(5,item,quality,enchantment)))
+        result.bind('<F6>', (lambda event: save_url(6,item,quality,enchantment)))
+        result.bind('<F7>', (lambda event: save_url(7,item,quality,enchantment)))
+        result.bind('<F8>', (lambda event: save_url(8,item,quality,enchantment)))
+        result.bind('<F9>', (lambda event: save_url(9,item,quality,enchantment)))
+        result.bind('<F10>', (lambda event: save_url(10,item,quality,enchantment)))
+        result.bind('<F11>', (lambda event: save_url(11,item,quality,enchantment)))
+        result.bind('<F12>', (lambda event: save_url(12,item,quality,enchantment)))
 
 
     except:
@@ -189,11 +187,11 @@ cbb_enchantment.current(0)
 cbb_enchantment.place(x=100, y=70)
 
 
-b1 = tk.Button(root, height = 1, width = 30, text= "Procurar...", command = lambda: search(entry_item_name.get().lower(),quality_dict[cbb_quality_value.get()],cbb_enchantment_value.get()))
+b1 = tk.Button(root, height = 1, width = 30, text= "Procurar...", command = lambda: search(entry_item_name.get().lower(),quality_dict[cbb_quality_value.get()],int(cbb_enchantment_value.get())))
 b1.place(x=25, y=100)
 
 
-root.bind("<Return>", (lambda event: search(entry_item_name.get().lower(),quality_dict[cbb_quality_value.get()],cbb_enchantment_value.get())))
+root.bind("<Return>", (lambda event: search(entry_item_name.get().lower(),quality_dict[cbb_quality_value.get()],int(cbb_enchantment_value.get()))))
 root.bind("<F1>",(lambda event: open_url(1)))
 root.bind("<F2>",(lambda event: open_url(2)))
 root.bind("<F3>",(lambda event: open_url(3)))
