@@ -46,6 +46,7 @@ def enchantment_func(enchantment_num):
 def data_func(timestamp):
     return f"{timestamp[8:10]}/{timestamp[5:7]}/{timestamp[0:4]} / {timestamp[11:13]}:{timestamp[14:16]}:{timestamp[17:20]}"
 
+
 def copy2clip(event, tree):
     for selected_item in tree.selection():
         item = tree.item(selected_item)
@@ -53,6 +54,7 @@ def copy2clip(event, tree):
         root.clipboard_clear()
         root.clipboard_append('   '.join(str(i) for i in record))
         
+
 def tree_sort_column(t, col, reverse):
     l = [(t.set(k, col), k) for k in t.get_children('')]
     try:
@@ -71,16 +73,16 @@ def tree_sort_column(t, col, reverse):
 
 def search(item,quality,enchantment):
     try:
-        with open('item_list.json' , 'r') as fp:
-            item_list = json.load(fp)
+        with urllib.request.urlopen("https://github.com/TheoSchramm/albion/raw/main/item_list.json") as url_obj:
+            item_list = json.load(url_obj)
         url = f'https://www.albion-online-data.com/api/v2/stats/prices/{item_list[item]}{enchantment_func(enchantment)}?locations=LymhurstBridgewatchFortSterlingMartlockThetfordCaerleon&qualities={quality}'
 
 
     except KeyError:
         messagebox.showerror(f"Erro","Item inválido.")
         return 0
-    except FileNotFoundError:
-        messagebox.showerror("Erro", "Arquivo JSON não encontrado.")
+    except urllib.error.HTTPError:
+        messagebox.showerror("Erro", "Sem conexão com a internet.")
         return 0
 
     with urllib.request.urlopen(url) as url_obj:
