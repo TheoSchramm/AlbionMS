@@ -1,5 +1,5 @@
 # Albion Market Search
-Um programa feito em Python que utilizando de dados coletados por jogadores de Albion Online, consegue retornar o preço de venda mais recente de (quase) qualquer item do mercado das capitais do jogo. 
+Um programa feito em Python que utilizando da API da comunidade do Albion Online, cria uma planilha reunindo os preços de venda, especificações e horário de um item qualquer que esteja disponível no mercado das capitais do jogo.
 
 
 # Exemplo
@@ -7,10 +7,9 @@ Um programa feito em Python que utilizando de dados coletados por jogadores de A
 
 
 # Como utilizar?
-1. Baixe o arquivo PYw<br>
-2. Execute o arquivo PYw<br>
-3. Digite o nome do item e selecione suas especificações<br>
-4. Pronto, fácil assim!<br>
+1. Baixe e execute o arquivo PYw<br>
+2. Digite o nome do item e selecione suas especificações<br>
+3. Pronto, fácil assim!<br>
 
 
 # __Perguntas Frequentes__
@@ -31,7 +30,7 @@ __Meus favoritos pararam de funcionar, socorro!__<br>
 - Começar pesquisa: `Enter`
 - Fechar janela dos resultados: `Esc`
 - Copiar dados: `Clique na linha desejada`
-- Mudar a classificação: `Clique na coluna desejada`
+- Mudar a ordem da classificação: `Clique na coluna desejada`
 - Salvar item como favorito: `F1-F12 na janela dos resultados`
 - Abrir item favoritado: `F1-F12 na janela de pesquisa`
 
