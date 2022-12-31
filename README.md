@@ -1,18 +1,18 @@
-# Albion Market Search
+# 📊 Albion Market Search
 Um programa feito em Python que utilizando da API da comunidade do Albion Online, cria uma planilha reunindo os preços de venda, especificações e horário de um item qualquer que esteja disponível no mercado das capitais do jogo.
 
 
-# Exemplo
+# 📷 Exemplo
 ![](/img_exemplo.png?raw=true "Exemplo")
 
 
-# Como utilizar?
+# 🤔 Como utilizar?
 1. Baixe e execute o arquivo PYw<br>
 2. Digite o nome do item e selecione suas especificações<br>
 3. Pronto, fácil assim!<br>
 
 
-# __Perguntas Frequentes__
+# __📌 Perguntas Frequentes__
 __Os preços estão desatualizados! Como faço para atualizar?__<br>
       > Caso você queira os dados em tempo real, [baixe](https://github.com/BroderickHyman/albiondata-client/releases) o client que vai monitorar os dados do seu jogo, assim atualizando os preços através de você.
 
@@ -26,7 +26,7 @@ __Meus favoritos pararam de funcionar, socorro!__<br>
       > Você provavelmente moveu/apagou o arquivo fav.json, restaure ele e seus favoritos irão reaparecer.
 
 
-# Atalhos
+# ⏳ Atalhos
 - Começar pesquisa: `Enter`
 - Fechar janela dos resultados: `Esc`
 - Copiar dados: `Clique na linha desejada`
