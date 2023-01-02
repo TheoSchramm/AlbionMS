@@ -30,15 +30,13 @@ class MenuWin(tk.Tk):
         self.entry_item_name = tk.Entry(self)
         self.entry_item_name.place(x=100, y=10, height = 20, width = 150)
 
-        self.cbb_quality_value = tk.StringVar()
-        self.cbb_quality = ttk.Combobox(self, textvariable = self.cbb_quality_value, width=11)
+        self.cbb_quality = ttk.Combobox(self, width=11)
         self.cbb_quality['values'] = list(quality_dict.keys())
         self.cbb_quality['state'] = 'readonly'
         self.cbb_quality.current(0)
         self.cbb_quality.place(x=100, y=40)
 
-        self.cbb_enchantment_value = tk.StringVar()
-        self.cbb_enchantment = ttk.Combobox(self, textvariable = self.cbb_enchantment_value, width = 2)
+        self.cbb_enchantment = ttk.Combobox(self, width = 2)
         self.cbb_enchantment['values'] = [i for i in range(5)]
         self.cbb_enchantment['state'] = 'readonly'
         self.cbb_enchantment.current(0)
@@ -65,11 +63,7 @@ class MenuWin(tk.Tk):
         self.search(self, data[index][0], data[index][1], data[index][2])
 
     def start_search(self, root):
-        self.search(
-            self,
-            self.entry_item_name.get().lower(),
-            quality_dict[self.cbb_quality_value.get()],
-            int(self.cbb_enchantment_value.get()))
+        self.search(self,self.entry_item_name.get().lower(),quality_dict[self.cbb_quality.get()],int(self.cbb_enchantment.get()))
 
     def search(self,root,item,quality,enchantment):
         try:
@@ -78,10 +72,10 @@ class MenuWin(tk.Tk):
             url = f'https://www.albion-online-data.com/api/v2/stats/prices/{item_list[item]}{self.enchantment_func(self, enchantment)}?locations=LymhurstBridgewatchFortSterlingMartlockThetfordCaerleon&qualities={quality}'
         except KeyError:
             messagebox.showerror(f"Erro","Item inválido.")
-            return 0
+            return None
         except urllib.error.HTTPError:
             messagebox.showerror("Erro", "Sem conexão com a internet.")
-            return 0
+            return None
         with urllib.request.urlopen(url) as url_obj:
             data = json.load(url_obj)
         ResultWin(self, data, item, quality, enchantment)
@@ -112,7 +106,6 @@ class ResultWin(Toplevel):
                 self.tree.column(i, anchor='center')
             
             self.successful_search = 0
-            
             try:
                 for i in range(len(data)):
                     if data[i]['sell_price_min'] != 0:
