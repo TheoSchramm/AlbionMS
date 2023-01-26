@@ -1,5 +1,5 @@
 # __📊 Albion Market Search__
-Um programa feito em Python que utilizando da API da comunidade do Albion Online, cria uma planilha reunindo os preços de venda, especificações e horário de um item qualquer que esteja disponível nos mercados do jogo.
+Um programa feito em Python usando a biblioteca Tkinter. Permite que o usuário pesquise o preço de itens no jogo Albion Online e exiba os resultados em um formato semelhante a uma tabela. O usuário pode inserir o nome do item, a qualidade e o nível de encantamento para pesquisar e o programa irá recuperar dados de uma API externa e exibir no janela de resultado. O script também inclui recursos adicionais, como classificar a tabela por diferentes colunas, salvar a pesquisa como favorita e copiar os dados do item selecionado para a área de transferência.
 
 
 # __📷 Exemplo__
@@ -7,10 +7,7 @@ Um programa feito em Python que utilizando da API da comunidade do Albion Online
 
 
 # __🤔 Como utilizar?__
-1. Baixe e execute o arquivo PYw<br>
-2. Digite o nome do item e selecione suas especificações<br>
-3. Pronto, fácil assim!<br>
-
+Através de uma interface gráfica criada com o módulo tkinter, o usuário pode inserir o nome do item, a qualidade e o encantamento desejado e, em seguida, clicar no botão "Pesquisar" para iniciar a busca. Os resultados da busca serão exibidos em uma janela de resultados, onde o usuário pode classificar e copiar informações para a área de transferência. Ele também pode salvar a pesquisa como favorito pressionando F1-F12. <br>
 
 # __📌 Perguntas Frequentes__
 __Os preços estão desatualizados! Como faço para atualizar?__<br>
