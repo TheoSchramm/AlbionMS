@@ -1,17 +1,14 @@
 # __📊 Albion Market Search__
-Um programa feito em Python usando a biblioteca Tkinter. Permite que o usuário pesquise o preço de itens no jogo Albion Online e exiba os resultados em um formato semelhante a uma tabela.
+Um programa feito em Python  que utilizando a interface gráfica da biblioteca Tkinter e uma API, Permite que o usuário pesquise o preço de itens do jogo Albion Online e exiba seus resultados.
 
 # __👨‍💻 Como funciona__
-O usuário pode inserir o nome do item, a qualidade e o nível de encantamento para pesquisar e o programa irá recuperar dados de uma API externa e exibir no janela de resultado. O script também inclui recursos adicionais, como classificar a tabela por diferentes colunas, salvar a pesquisa como favorita e copiar os dados do item selecionado para a área de transferência.
+O usuário deve inserir o nome do item, sua qualidade e o nível de encantamento para pesquisar e o programa irá recuperar dados de uma API externa e exibir no janela de resultados. Também é possível ordenar as tabelas do resultado por diferentes colunas (Eg. Preço, Cidade, Etc), salvar a pesquisa como favorita e copiar os dados do item selecionado para a área de transferência.
 
 # __📷 Exemplo__
 ![](/img_exemplo.png?raw=true "Exemplo")
 
 # __📌 Dependências__
 1. [Python](https://www.python.org/downloads/)
-
-# __🤔 Como utilizar?__
-Através da interface gráfica, o usuário pode inserir o nome do item, a qualidade e o encantamento desejado e, em seguida, clicar no botão "Pesquisar" para iniciar a busca. Os resultados da busca serão exibidos em uma janela de resultados, onde o usuário pode classificar e copiar informações para a área de transferência. Ele também pode salvar a pesquisa como favorito pressionando F1-F12. <br>
 
 # __🙋 Perguntas Frequentes__
 __Os preços estão desatualizados! Como faço para atualizar?__<br>
@@ -20,11 +17,11 @@ __Os preços estão desatualizados! Como faço para atualizar?__<br>
 __Como vou saber o nome de X item?__<br>
       R: O arquivo JSON deste repositório contém uma lista em inglês e em português com o nome de todos os itens do jogo.
 
-__Devo colocar acentuação no nome dos itens?__<br>
-      R: Não!
+__O item que eu procuro está sempre inválido!__<br>
+      R: Verifique sua conexão com a Internet e certifique-se de não utilizar nenhum acento.
 
-__Meus favoritos pararam de funcionar, como prosseguir?__<br>
-      R: Você provavelmente moveu/apagou o arquivo fav.json, restaure ele e seus favoritos irão reaparecer.
+__Meus favoritos sumiram!__<br>
+      R: Você provavelmente moveu/apagou o arquivo fav.json, restaure ele e seus favoritos irão voltar.
 
 
 # __⏳ Atalhos__
